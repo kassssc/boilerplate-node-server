@@ -21,21 +21,22 @@ Default Ports (could be overwritten by .env file):
 - GraphQL: 11168
 
 Environment Variables: 
-LOG_DIR: directory to store logs on docker container
-HOST_LOG_DIR: directory to store logs on HOST machine (automatically created by app if doesn't exist)
-HOST_DB_DIR: directory to store the DB data
-DB_ROOT_USER: Database root username
-DB_ROOT_PASS: Database root password
-DB_PORT: Port to expost MongoDB on
-DB_NAME: Name of database
-DB_USER: Username for API database user
-DB_PASS: Password for API database user
-PORT: Port to expost graphQL API on
-GRAPHQL_ENDPOINT: Customize endpoint for graphql server
-JWT_SECRET: Random bytes as jwt secret (Must be kept secret)
-ADMIN_USER_EMAIL: Email of the default user created
-ADMIN_USER_NAME: Name of default user created
-ADMIN_USER_PASS: Password for default user
+
+- LOG_DIR: directory to store logs on docker container
+- HOST_LOG_DIR: directory to store logs on HOST machine (automatically created by app if doesn't exist)
+- HOST_DB_DIR: directory to store the DB data
+- DB_ROOT_USER: Database root username
+- DB_ROOT_PASS: Database root password
+- DB_PORT: Port to expost MongoDB on
+- DB_NAME: Name of database
+- DB_USER: Username for API database user
+- DB_PASS: Password for API database user
+- PORT: Port to expost graphQL API on
+- GRAPHQL_ENDPOINT: Customize endpoint for graphql server
+- JWT_SECRET: Random bytes as jwt secret (Must be kept secret)
+- ADMIN_USER_EMAIL: Email of the default user created
+- ADMIN_USER_NAME: Name of default user created
+- ADMIN_USER_PASS: Password for default user
 
 Notes:
 
