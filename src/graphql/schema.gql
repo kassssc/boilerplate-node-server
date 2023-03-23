@@ -1,0 +1,21 @@
+type UserAccount {
+  _id: ID!
+  name: String!
+  email: String! 
+}
+
+type JWT {
+  jwt: String
+}
+
+type Query {
+  get_user (id: String!): UserAccount
+  search_users (search_query: String): [UserAccount!]
+  login (email: String!, password: String!): JWT
+}
+
+type Mutation {
+  create_user (name: String!, email: String!, password: String!): String
+  update_user (id: String!, name: String, email: String): Boolean
+  delete_user (id: String!): Boolean
+}

@@ -1,0 +1,202 @@
+{
+	"info": {
+		"_postman_id": "90973dbc-e6be-4547-8c90-ae220a602803",
+		"name": "Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4777193"
+	},
+	"item": [
+		{
+			"name": "Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation create_user (\n    $email: String!,\n    $name: String!,\n    $password: String!\n) {\n    create_user (\n        email: $email,\n        name: $name,\n        password: $password\n    )\n}",
+						"variables": "{\n    \"email\": \"hello@hello.com\",\n    \"name\": \"hello\",\n    \"password\": \"hello\"\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:11168/api/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "11168",
+					"path": [
+						"api",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation update_user (\n    $email: String,\n    $name: String\n    $id: String!\n) {\n    update_user (\n        email: $email,\n        name: $name,\n        id: $id\n    )\n}",
+						"variables": "{\n    \"name\": \"ks\",\n    \"email\": \"ks@ks.com\",\n    \"id\": \"641c536d88a71987e38e8674\"\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:11168/api/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "11168",
+					"path": [
+						"api",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query search_users (\n    $search_query: String\n) {\n    search_users (\n        search_query: $search_query\n    ) {\n        _id\n        name\n        email\n    }\n}",
+						"variables": "{\n    \"search_query\": \"Ka\"\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:11168/api/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "11168",
+					"path": [
+						"api",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query get_user (\n    $id: String!\n) {\n    get_user (\n        id: $id\n    ) {\n        _id,\n        name,\n        email\n    }\n}",
+						"variables": "{\n    \"id\": \"641c536d88a71987e38e8674\"\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:11168/api/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "11168",
+					"path": [
+						"api",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation delete_user (\n    $id: String!\n) {\n    delete_user (\n        id: $id\n    )\n}",
+						"variables": "{\n    \"id\": \"641c56b94e14bd53ef43cdab\"\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:11168/api/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "11168",
+					"path": [
+						"api",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query login (\n    $email: String!,\n    $password: String!\n) {\n    login (\n        email: $email,\n        password: $password\n    ) {\n        jwt\n    }\n}",
+						"variables": "{\n    \"email\": \"ks@ks.com\",\n    \"password\": \"ks\"\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:11168/api/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "11168",
+					"path": [
+						"api",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtzQGtzLmNvbSIsImlhdCI6MTY3OTU3ODEyNywiZXhwIjoxNjc5NzUwOTI3fQ.X720l8SsG11WeF--1JFqvhPW8Wcc9IYxv31p7dAz85o",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

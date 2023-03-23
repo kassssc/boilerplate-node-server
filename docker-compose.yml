@@ -1,0 +1,52 @@
+version: '3'
+
+# These are the apps that would each be run in their own containers
+services:
+
+  # Backend Express Server
+  server:
+    container_name: test-server
+    build: .
+    volumes:
+      - ${HOST_LOG_DIR}:${LOG_DIR}
+    ports:
+      - ${PORT}:${PORT}
+    links:
+      - mongodb
+    restart: always
+    depends_on: [ "mongodb" ]
+    environment:
+      PORT: ${PORT}
+      GRAPHQL_ENDPOINT: ${GRAPHQL_ENDPOINT}
+      DB_HOST: mongodb
+      DB_PORT: ${DB_PORT}
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+      JWT_SECRET: ${JWT_SECRET}
+      ADMIN_USER_NAME: ${ADMIN_USER_NAME}
+      ADMIN_USER_PASS: ${ADMIN_USER_PASS}
+      ADMIN_USER_EMAIL: ${ADMIN_USER_EMAIL}
+      LOG_DIR: ${LOG_DIR}
+
+  # MongoDB database
+  mongodb:
+    image: mongo:latest
+    container_name: test-mongo
+    volumes:
+      - ${HOST_DB_DIR}:/data/db
+      - ./mongo-init.sh:/docker-entrypoint-initdb.d/mongo-init.sh:ro
+    ports:
+      - ${DB_PORT}:${DB_PORT}
+    command: [
+      "--bind_ip_all",
+      "--quiet",
+      "--port", "${DB_PORT}"
+    ]
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${DB_ROOT_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_ROOT_PASS}
+      MONGO_INITDB_DATABASE: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
